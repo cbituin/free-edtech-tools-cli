@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+# git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # Specify your gem's dependencies in free_edtech_tools.gemspec
-gemspec
+
+gem 'pry'
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'rspec'

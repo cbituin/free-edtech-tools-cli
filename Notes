@@ -1,0 +1,19 @@
+How to build a CLI Gem
+
+- Plan your gem, imagine your interface
+- Start with the project structure
+- Start with the entry point - the file run
+- Force that to build the CLI interface
+- Stub out the interface
+- Start making things real
+- Discover objects
+- Program
+
+Ref: https://www.youtube.com/watch?v=_lDExWIhYKI&list=PLcv_EajtuZJhEGkZtMO4bIebzVf6WFGk3&index=2&t=2s
+
+/lib files
+- controller
+    - free_edtech_tools.rb
+- model
+    -
+- 
