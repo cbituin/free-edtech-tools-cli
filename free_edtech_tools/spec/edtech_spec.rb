@@ -2,20 +2,19 @@ require "spec_helper.rb"
 
 describe "Edtech" do
     let!(:edtech_index_array) {[
-        {:name=>"App # 1", :category=>"Create Infographics", :description=>"This app creates infographics.", :url=>"https://www.google.com/app#1"},
-        {:name=>"App # 2", :category=>"Digital Storytelling", :description=>"This app tells stories digitally.", :url=>"https://www.google.com/app#2"},
-        {:name=>"App # 3", :category=>"Screen Capturing", :description=>"This app captures a screen.", :url=>"https://www.google.com/app#3"},
-        {:name=>"App # 4", :category=>"Testing and Quizzing", :description=>"This app tests and quizzes you.", :url=>"https://www.google.com/app#4"},
-        {:name=>"App # 5", :category=>"Sticky Notes", :description=>"This app creates sticky notes.", :url=>"https://www.google.com/app#5"}
+        {:name=>"App # 1", :category=>"Create Infographics"},
+        {:name=>"App # 2", :category=>"Digital Storytelling"},
+        {:name=>"App # 3", :category=>"Screen Capturing"},
+        {:name=>"App # 4", :category=>"Testing and Quizzing"},
+        {:name=>"App # 5", :category=>"Sticky Notes"}
         ]}
         
     let!(:edtech_hash) {{
-        :category=>"Generic Category",
         :description=>"This is a description for the app.",
         :url=>"https://www.thisisafakeurlhopefully.com/appdetails"
         }}
         
-    let!(:edtech) {Edtech.new({:name=>"New Edtech App", :category=>"Edtech Category"
+    let!(:edtech) {Edtech.new({:name=>"App # 1", :category=>"Create Infographics"
     })}
     
     after(:each) do 
@@ -38,17 +37,29 @@ describe "Edtech" do
     
     describe ".create_from_collection" do
     #create a collection of apps using scraper class
-    
+        it "uses the Scraper class to create a collection of known apps with a name and category" do
+            #resets @@all to empty array to test for newly created collection
+            Edtech.class_variable_set(:@@all, [])
+            Edtech.create_from_collection(edtech_index_array)
+            expect(Edtech.class_variable_get(:@@all).first.name). to eq("App # 1")
+        end
     end
     
     describe "#add_attributes" do
     #allows for edtech apps to have additional attributes for future uses
-        
+        it "uses the Scraper class to get a collection of apps and uses a hash to set additional attributes for that app" do
+            edtech.add_attributes(edtech_hash)
+            expect(edtech.category).to eq("This is a description for the app.")
+            expect(edtech.url).to eq("https://www.thisisafakeurlhopefully.com/appdetails")
+        end
     end
     
     describe ".all" do
     #lists the collection of apps currently known
-    
+        it "returns the collection of app via the class variable @@all" do
+            Edtech.class_variable_set(:@@all, [])
+            expect(Edtech.all).to contain_exactly([])
+        end
     end
     
 end

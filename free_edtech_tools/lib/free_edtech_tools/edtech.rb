@@ -4,14 +4,14 @@ require 'nokogiri'
 
 class Edtech 
     
-    attr_accessor :name
+    # attr_accessor :name
     
-    @@all = []
+    # @@all = []
     
-    def initialize(edtech_hash)
-        @name = edtech_hash[:name]
-        @@all << self
-    end
+    # def initialize(edtech_hash)
+    #     @name = edtech_hash[:name]
+    #     @@all << self
+    # end
     
 
 end
