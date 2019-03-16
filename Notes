@@ -12,11 +12,16 @@ How to build a CLI Gem
 Ref: https://www.youtube.com/watch?v=_lDExWIhYKI&list=PLcv_EajtuZJhEGkZtMO4bIebzVf6WFGk3&index=2&t=2s
 
 /lib files
-- controller
-    - free_edtech_tools.rb
-- model
-    -
-- 
+- free_edtech_tools.rb
+    - Contains main CLI processes and outputs
+- Scraper class
+    - Grabs all the information from the website, and stores the information in a hash for each app
+- Edtech class
+    - Uses the information from the scraper class
+    - Creates a collection of apps
+    - Creates an object for each application
+    - Can return applications based on a category
+    - Can also return a url based on selected app/object
 
 Basic CLI below:
 
@@ -60,3 +65,6 @@ Okay, what would you like to do?
 3. Quit
 
 =end
+
+
+

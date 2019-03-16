@@ -50,8 +50,4 @@ Okay, what would you like to do?
 2. Start over
 3. Quit
 
-
-
-
-
 =end
