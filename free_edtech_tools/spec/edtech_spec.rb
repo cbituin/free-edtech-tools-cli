@@ -49,7 +49,7 @@ describe "Edtech" do
     #allows for edtech apps to have additional attributes for future uses
         it "uses the Scraper class to get a collection of apps and uses a hash to set additional attributes for that app" do
             edtech.add_attributes(edtech_hash)
-            expect(edtech.category).to eq("This is a description for the app.")
+            expect(edtech.description).to eq("This is a description for the app.")
             expect(edtech.url).to eq("https://www.thisisafakeurlhopefully.com/appdetails")
         end
     end
@@ -58,7 +58,7 @@ describe "Edtech" do
     #lists the collection of apps currently known
         it "returns the collection of app via the class variable @@all" do
             Edtech.class_variable_set(:@@all, [])
-            expect(Edtech.all).to contain_exactly([])
+            expect(Edtech.all).to contain_exactly()
         end
     end
     
