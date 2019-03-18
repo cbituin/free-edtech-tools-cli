@@ -62,4 +62,10 @@ describe "Edtech" do
         end
     end
     
+    describe ".filter_by_category" do
+    #returns an array of apps based on category selected (user input)
+        it "returns a collection of apps based on a category selected by the user" do
+            expect(Edtech.filter_by_category("Create Infographics")).to include(:name=>"App # 1")
+        end
+    end
 end
