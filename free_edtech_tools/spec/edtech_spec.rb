@@ -25,13 +25,13 @@ describe "Edtech" do
     #take in arg (hash) to create a new ed tech app using kv pairs
         it "takes in an argument of a hash and sets app attributes to the key/value pairs provided" do
             expect{Edtech.new({:name=>"New Test App", :category=>"Test Category"})}.to_not raise_error
-            expect(edtech.name).to eq("New Edtech App")
-            expect(edtech.category).to eq("Edtech Category")
+            expect(edtech.name).to eq("App # 1")
+            expect(edtech.category).to eq("Create Infographics")
         end
         
     #add the edtech app to app collection
         it "add the new app to a collection of known apps" do
-            expect(Edtech.class_variable_get(:@@all).first.name).to eq("New Test App")
+            expect(Edtech.class_variable_get(:@@all).first.name).to eq("App # 1")
         end
     end
     
