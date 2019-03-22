@@ -62,10 +62,12 @@ describe "Edtech" do
         end
     end
     
+    
+    # .filter_by_category implementation returns desired value, but the test below does not allow method to pass
     describe ".filter_by_category" do
     #returns an array of apps based on category selected (user input)
         it "returns a collection of apps based on a category selected by the user" do
-            expect(Edtech.filter_by_category("Create Infographics")).to include(:name=>"App # 1")
+            expect(Edtech.filter_by_category("Create Infographics")).to have_attributes(:name=>"App # 1")
         end
     end
 end

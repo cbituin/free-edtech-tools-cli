@@ -29,8 +29,10 @@ class Edtech
         @@all
     end
     
-    def self.filter_by_category
-    
+    def self.filter_by_category(category)
+        self.all.select { |apps| apps.category == category }
     end
+    
+    binding.pry
 
 end
