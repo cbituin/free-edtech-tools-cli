@@ -30,9 +30,8 @@ class Edtech
     end
     
     def self.filter_by_category(category)
+        #returns desired values, but does not pass tests written
         self.all.select { |apps| apps.category == category }
     end
     
-    binding.pry
-
 end

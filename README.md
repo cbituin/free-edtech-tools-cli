@@ -1,8 +1,6 @@
-# FreeEdtechTools
+# Free Edtech Tools (for Teachers!)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/free_edtech_tools`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a Ruby Gem that provides a CLI to allow educators to find education technology tools based on a selected category. 
 
 ## Installation
 
@@ -22,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Start the CLI application, then follow the prompts:
+
+    $ free_edtech_tools
 
 ## Development
 
