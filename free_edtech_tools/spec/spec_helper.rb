@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "free_edtech_tools"
+require "./lib/free_edtech_tools"
 
 # require_relative "../lib/edtech.rb"
 # require_relative "../lib/scraper.rb"
