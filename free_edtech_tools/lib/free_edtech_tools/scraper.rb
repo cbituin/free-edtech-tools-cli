@@ -11,31 +11,48 @@ class Scraper
        all_apps = []
     #   applications_page.css().each.do
     #   end
-       binding.pry
+
+    #   @sampletitle = "19 Free Tools To Create Infographics For Teachers"
+    #   simple = short_cat_title(@sampletitle)
        
        all_apps
-       
+       binding.pry
    end
-    
+   
+   
+   def self.short_cat_title(str)
+       str.gsub(/(\w+ Free )|( For Teachers)/, "")
+   end
+   
 end
 
 # applications_page.css("h2:nth-child(5)").text
 # => "19 Free Tools To Create Infographics For Teachers "
+# applications_page.css("ol:nth-child(6) li").text
+
 
 # applications_page.css("h2:nth-child(7)").text
 # => "19 Free Text To Speech Tools For Teachers"
+# applications_page.css("ol:nth-child(8) li").text   
 
 # applications_page.css("h2:nth-child(9)").text
 # => "21 Free Digital Storytelling Tools For Teachers"
+# applications_page.css("ol:nth-child(10) li").text   
 
 # applications_page.css("h2:nth-child(11)").text
 # => "15 Free Podcast Tools For Teachers"
+# applications_page.css("ol:nth-child(12) li").text   
 
 # applications_page.css("h2:nth-child(13)").text
 # => "27 Free Survey, Polls, and Quizzes Tools For Teachers"
+# applications_page.css("ol:nth-child(14) li").text   
+
 
 # applications_page.css("h2:nth-child(15)").text
 # => "17 Free Screen Capturing Tools For Teachers "
+# applications_page.css("ol:nth-child(16) li").text   
+
 
 # applications_page.css("h2:nth-child(17)").text
 # => "30 Free Social Bookmarking Tools For Teachers"
+# applications_page.css("ol:nth-child(18) li").text   
