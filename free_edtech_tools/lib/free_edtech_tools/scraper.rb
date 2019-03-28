@@ -14,6 +14,24 @@ class Scraper
 
     #   @sampletitle = "19 Free Tools To Create Infographics For Teachers"
     #   simple = short_cat_title(@sampletitle)
+    
+    #h2 counter => produces numbers to iterate through css for categories wanted (5, 7, 9, 11, 13, 15, 17)
+        # h2_counter = 5
+        # while h2_counter <= 17
+        #     puts h2_counter
+        #     h2_counter += 2
+        # end
+    
+    #ol counter => produces numbers to iterate through css for applications wanted (6, 8, 10, 12, 14, 16, 18)
+        # ol_counter = 6
+        # while ol_counter <= 18
+        #     puts ol_counter
+        #     ol_counter += 2
+        # end
+    
+    
+    
+    
        
        all_apps
        binding.pry
