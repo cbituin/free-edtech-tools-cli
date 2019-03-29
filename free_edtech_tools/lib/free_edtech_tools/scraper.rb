@@ -24,8 +24,9 @@ class Scraper
             @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
             ol_counter += 2
         end
-    
+    applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
        binding.pry
+    end
    end
    
    def self.short_cat_title(str)
@@ -72,3 +73,23 @@ end
 # applications_page.css("h2:nth-child(17)").text
 # => "30 Free Social Bookmarking Tools For Teachers"
 # applications_page.css("ol:nth-child(18) li").text   
+
+
+#<Nokogiri::XML::Element:0x14a68c4 name="li" children=[
+#<Nokogiri::XML::Text:0x1719ae8 "\n">, 
+#<Nokogiri::XML::Element:0x15f2ae8 name="a" attributes=[
+#<Nokogiri::XML::Attr:0x164a9c8 name="href" value="https://live.amcharts.com/">, 
+
+#<Nokogiri::XML::Attr:0x164a9b4 name="target" value="_blank">, 
+#<Nokogiri::XML::Attr:0x164a9a0 name="rel" value="noopener">] children=[#<Nokogiri::XML::Text:0x164a16c "amCharts Visual Editor ">]>, 
+#<Nokogiri::XML::Text:0x1719048 "This editor allows you to use amCharts as a web service. This means that all you need to do is to configure the chart and paste the generated HTML code to your HTML page.">]>
+
+################
+
+ #<Nokogiri::XML::Element:0x14a689c name="li" children=[
+ #<Nokogiri::XML::Text:0x1718d00 "\n">, 
+ #<Nokogiri::XML::Element:0x15f2ac0 name="a" attributes=[
+#<Nokogiri::XML::Attr:0x164df4c name="href" value="http://chartsbin.com/about/apply">, 
+#<Nokogiri::XML::Attr:0x164df38 name="target" value="_blank">, 
+#<Nokogiri::XML::Attr:0x164df24 name="rel" value="noopener">] children=[#<Nokogiri::XML::Text:0x164d704 "ChartsBin">]>,
+#<Nokogiri::XML::Text:0x1718260 "Create your own interactive map. It's free for now.">]>
