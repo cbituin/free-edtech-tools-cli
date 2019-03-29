@@ -2,44 +2,42 @@ require 'open-uri'
 require 'pry'
 require 'nokogiri'
 
-class Scraper
+class Scraper   
+    
+    @@all_apps = []
+    @@all_cats = []
    
    def self.scrape_main_page(index_url)
        html = File.read(index_url)
        applications_page = Nokogiri::HTML(html)
-       
-       all_apps = []
-    #   applications_page.css().each.do
-    #   end
 
-    #   @sampletitle = "19 Free Tools To Create Infographics For Teachers"
-    #   simple = short_cat_title(@sampletitle)
-    
     #h2 counter => produces numbers to iterate through css for categories wanted (5, 7, 9, 11, 13, 15, 17)
-        # h2_counter = 5
-        # while h2_counter <= 17
-        #     puts h2_counter
-        #     h2_counter += 2
-        # end
+        h2_counter = 5
+        while h2_counter <= 17
+            @@all_cats << self.short_cat_title(applications_page.css("h2:nth-child(#{h2_counter})").text)
+            h2_counter += 2
+        end
     
     #ol counter => produces numbers to iterate through css for applications wanted (6, 8, 10, 12, 14, 16, 18)
-        # ol_counter = 6
-        # while ol_counter <= 18
-        #     puts ol_counter
-        #     ol_counter += 2
-        # end
+        ol_counter = 6
+        while ol_counter <= 18
+            @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
+            ol_counter += 2
+        end
     
-    
-    
-    
-       
-       all_apps
        binding.pry
    end
    
-   
    def self.short_cat_title(str)
        str.gsub(/(\w+ Free )|( For Teachers)/, "")
+   end
+   
+   def self.all_apps
+       @@all_apps
+   end
+   
+   def self.all_cats
+       @@all_cats
    end
    
 end
