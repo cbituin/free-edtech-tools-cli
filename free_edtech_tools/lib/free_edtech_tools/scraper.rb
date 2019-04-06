@@ -14,19 +14,24 @@ class Scraper
     #h2 counter => produces numbers to iterate through css for categories wanted (5, 7, 9, 11, 13, 15, 17)
         h2_counter = 5
         while h2_counter <= 17
-            @@all_cats << self.short_cat_title(applications_page.css("h2:nth-child(#{h2_counter})").text)
+            @@all_cats << self.short_cat_title(applications_page.css("h2:nth-child(#{h2_counter})").text.strip)
             h2_counter += 2
         end
     
     #ol counter => produces numbers to iterate through css for applications wanted (6, 8, 10, 12, 14, 16, 18)
         ol_counter = 6
         while ol_counter <= 18
-            @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
+            # @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
+            
+#############TODO: figure out how to gather individual apps. apps currently show as large block of text
+            
+            applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
+            end
             ol_counter += 2
         end
-    applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
-       binding.pry
-    end
+    
+    
+   
    end
    
    def self.short_cat_title(str)
