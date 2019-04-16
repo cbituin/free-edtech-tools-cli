@@ -11,6 +11,8 @@ class Edtech
     def initialize(edtech_hash)
         @name = edtech_hash[:name]
         @category = edtech_hash[:category]
+        @description = edtech_hash[:description]
+        @url = edtech_hash[:url]
         @@all << self
     end
     
@@ -19,11 +21,12 @@ class Edtech
             self.new(app)
         end
     end
-    
-    def add_attributes(edtech_hash)
-        self.description = edtech_hash[:description]
-        self.url = edtech_hash[:url]
-    end
+
+#replaced with addition to #initialize    
+#    def add_attributes(edtech_hash)
+#        self.description = edtech_hash[:description]
+#        self.url = edtech_hash[:url]
+#    end
     
     def self.all
         @@all
