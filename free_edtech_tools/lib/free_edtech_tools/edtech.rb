@@ -2,7 +2,7 @@
 require 'pry'
 # require 'nokogiri'
 
-class Edtech 
+class FreeEdtechTools::Edtech 
     
     attr_accessor :name, :category, :description, :url
     

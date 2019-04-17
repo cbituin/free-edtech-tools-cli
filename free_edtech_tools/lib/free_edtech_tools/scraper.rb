@@ -23,16 +23,15 @@ class Scraper
         while ol_counter <= 18
             # @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
             
-#TODO: Edtech.all shows all apps => :url needs to be added
+#TODO: url is returning NoMethodError for 'value'
             
             applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
-                # binding.pry
-                
                 name = app.css("a").text.strip
                 description = app.text.gsub("#{app.css("a").text}", "").strip
                 category = @@all_cats[ol_counter - 6]
-                url = app.css("a").attribute("href").value
-                
+                # url = app.css("a").attribute("href").value
+
+                # binding.pry                
                 @@all_apps << Edtech.new(
                 :name => name, 
                 :description => description, 
