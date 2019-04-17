@@ -18,20 +18,32 @@ class Scraper
             h2_counter += 2
         end
 
-    #ol counter => produces numbers to iterate through css for applications wanted (6, 8, 10, 12, 14, 16, 18)
+    # ol counter => produces numbers to iterate through css for applications wanted (6, 8, 10, 12, 14, 16, 18)
         ol_counter = 6
         while ol_counter <= 18
             # @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
             
-#############TODO: Edtech.all shows all apps => :description is not showing up for each app object
+#TODO: Edtech.all shows all apps => :url needs to be added
             
             applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
-              @@all_apps << Edtech.new(:name=>"#{app.css("a").text.strip}", :description=>"#{app.text.gsub("#{app.css("a").text}", "")}", :category=>"#{@@all_cats[ol_counter - 6]}") 
+                # binding.pry
+                
+                name = app.css("a").text.strip
+                description = app.text.gsub("#{app.css("a").text}", "").strip
+                category = @@all_cats[ol_counter - 6]
+                url = app.css("a").attribute("href").value
+                
+                @@all_apps << Edtech.new(
+                :name => name, 
+                :description => description, 
+                :category => category, 
+                :url => url
+                ) 
             end
             ol_counter += 2
         end
-    
-    binding.pry
+    # binding.pry
+
    end
    
    def self.short_cat_title(str)
