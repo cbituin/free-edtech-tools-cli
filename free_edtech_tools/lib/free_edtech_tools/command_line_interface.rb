@@ -1,55 +1,36 @@
-class FreeEdtechTools::CLI
+require 'pry'
 
-=begin
+class CLI
+    
+    def call
+        welcome
+        menu
+        goodbye
+    end
 
-Welcome to The Best CLI Edtech Library on the Planet!
-What type of tool are you looking for today?
-1. Create Infographics
-2. Digital Storytelling
-3. Survey, Polls, and Quizzes
-4. Screen Capturing
-5. Photo and Image Editing
-Enter the number of the category you would like to explore.
+    def welcome
 
-[Accepts user choice] #example: 1
+        puts "Welcome to The Best CLI Edtech Library on the Planet! What type of tool are you looking for today?"
 
-Create Infographics
-1. amCharts Visual Editor -  This editor allows you to use amCharts as a web service. This means that all you need to do is to configure the chart and paste the generated HTML code to your HTML page.
-2. ChartsBinCreate -  your own interactive map. It's free for now.
-3. DipityCreate -  an interactive, visually engaging timeline in minutes. Use dynamic visualization tools to display photos, videos, news and blogs in chronological order.
-4. Easel.lyCreate -  and share visual ideas online. Vhemes are visual themes. Drag and drop a vheme onto your canvas for easy creation of your visual idea!
-5. GapminderGapminder -  is used in classrooms around the world to build a fact-based world view.
-Enter the number of the application for the information you would like to view.
+        category_choices = %Q(
+            1. Create Infographics
+            2. Digital Storytelling
+            3. Survey, Polls, and Quizzes
+            4. Screen Capturing
+            5. Photo and Image Editing
+        ) 
 
-[Accepts user choice] #example: 1
+        puts category_choices
 
-Are you sure you would like to view #{edtech.name}? (Yes/No)
+    end
 
-[Accepts user choice] #example: 
+    def menu
+        input = nil
 
-#yes
-Great! Loading the website for #{edtech.name}.
-[Loads website]
-[Restarts program]
+    end
 
-#no 
-Okay, what would you like to do?
-1. Select a different option
-2. Start over
-3. Quit
-
-=end
-
-puts "Welcome to The Best CLI Edtech Library on the Planet! What type of tool are you looking for today?"
-
-category_choices = %Q(
-    1. Create Infographics
-    2. Digital Storytelling
-    3. Survey, Polls, and Quizzes
-    4. Screen Capturing
-    5. Photo and Image Editing
-) 
-
-puts category_choices
+    def goodbye
+        
+    end
 
 end

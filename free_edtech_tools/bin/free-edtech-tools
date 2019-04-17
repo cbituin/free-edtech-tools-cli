@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "free_edtech_tools"
+require "./free-edtech-tools"
 
 FreeEdtechTools::CLI.new.call
