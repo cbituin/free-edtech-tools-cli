@@ -2,7 +2,7 @@ require 'open-uri'
 require 'pry'
 require 'nokogiri'
 
-class Scraper   
+class FreeEdtechTools::Scraper   
     
     @@all_apps = []
     @@all_cats = []
