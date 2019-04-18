@@ -5,35 +5,33 @@ require 'pry'
 class FreeEdtechTools::CLI
     
     def call
-        FreeEdtechTools::Scraper.scrape_main_page("../../fixtures/index.html")
+        FreeEdtechTools::Scraper.scrape_main_page("https://elearningindustry.com/321-free-tools-for-teachers-free-educational-technology")        
         welcome
         menu
         goodbye
     end
 
     def welcome
-        puts "Welcome to The Best CLI Edtech Library on the Planet! What type of tool are you looking for today?"
+        puts "Welcome to The Best CLI Edtech Library on the Planet! Feel free to browse our #{FreeEdtechTools::Scraper.all_apps.count} apps!"
+        puts "What type of tool are you looking for today?"
 
-        # category_choices = %Q(
-        #     1. Create Infographics
-        #     2. Digital Storytelling
-        #     3. Survey, Polls, and Quizzes
-        #     4. Screen Capturing
-        #     5. Photo and Image Editing
-        # ) 
+        sleep(3)
 
-        # puts category_choices
-
-        binding.pry
+        FreeEdtechTools::Scraper.all_cats.each { |app| puts app; sleep(1)}
+        sleep(1)
     end
 
     def menu
-        puts "This is the menu function"
-        # input = nil
+        input = nil
+        while input != "exit"
+            puts "Enter #1-7 to make your selection. Type 'exit' to leave."
+            
+        end
 
     end
 
     def goodbye
+        binding.pry
         puts "Goodbye [function]"
     end
 

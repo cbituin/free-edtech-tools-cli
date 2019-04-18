@@ -66,5 +66,15 @@ Okay, what would you like to do?
 
 =end
 
+ideas from other projects
+<!-- 
+def clear_screen
+system("clear")
+system("cls")
+end 
+-->
 
-
+<!-- 
+.colorize(:blue) #add to text to color the text 
+gem tty and allows ascii art
+-->

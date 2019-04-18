@@ -8,7 +8,7 @@ class FreeEdtechTools::Scraper
     @@all_cats = []
    
    def self.scrape_main_page(index_url)
-       html = File.read(index_url)
+       html = open(index_url)
        applications_page = Nokogiri::HTML(html)
 
     #h2 counter => produces numbers to iterate through css for categories wanted (5, 7, 9, 11, 13, 15, 17)
@@ -29,10 +29,10 @@ class FreeEdtechTools::Scraper
                 name = app.css("a").text.strip
                 description = app.text.gsub("#{app.css("a").text}", "").strip
                 category = @@all_cats[ol_counter - 6]
-                # url = app.css("a").attribute("href").value
+                url = app.css("a").attribute("href") #.value
 
                 # binding.pry                
-                @@all_apps << Edtech.new(
+                @@all_apps << FreeEdtechTools::Edtech.new(
                 :name => name, 
                 :description => description, 
                 :category => category, 
