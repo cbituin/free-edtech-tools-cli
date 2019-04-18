@@ -25,13 +25,16 @@ class FreeEdtechTools::CLI
         input = nil
         while input != "exit"
             puts "Enter #1-7 to make your selection. Type 'exit' to leave."
+            input = gets.strip.to_i
+            binding.pry
             
+            FreeEdtechTools::Scraper.all_cats[input - 1].gsub("\u00a0", "")
+
         end
 
     end
 
     def goodbye
-        binding.pry
         puts "Goodbye [function]"
     end
 
