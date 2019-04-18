@@ -1,6 +1,8 @@
 # Free Edtech Tools (for Teachers!)
 
-This is a Ruby Gem that provides a CLI to allow educators to find education technology tools based on a selected category. 
+This is a Ruby Gem that provides a CLI to allow educators to find education technology tools based on a selected category. All data for this gem has been pulled from <a href="https://elearningindustry.com/321-free-tools-for-teachers-free-educational-technology" target="blank">this site.</a>
+
+A video walkthrough of this gem can be found <a href="">here</a>. 
 
 ## Installation
 
@@ -32,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/free_edtech_tools. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cbituin/free_edtech_tools. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
