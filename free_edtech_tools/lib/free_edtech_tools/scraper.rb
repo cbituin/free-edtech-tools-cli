@@ -26,7 +26,7 @@ class FreeEdtechTools::Scraper
 #TODO: url is returning NoMethodError for 'value'
             
             applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
-                name = app.css("a").text.strip
+                name = app.css("a").text.strip.gsub("\u00a0", "")
                 description = app.text.gsub("#{app.css("a").text}", "").strip
                 category = @@all_cats[ol_counter - 6]
                 url = app.css("a").attribute("href") #.value
@@ -46,7 +46,7 @@ class FreeEdtechTools::Scraper
    end
    
    def self.short_cat_title(str)
-       str.gsub(/(\w+ Free )|( For Teachers)/, "")
+       str.gsub(/(\w+ Free )|( For Teachers)/, "").gsub("\u00a0", "")
    end
    
    def self.all_apps
@@ -55,6 +55,10 @@ class FreeEdtechTools::Scraper
    
    def self.all_cats
        @@all_cats
+   end
+
+   def self.filter(category)
+    self.all_apps.select { |apps| apps.category == category }
    end
    
 end

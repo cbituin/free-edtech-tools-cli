@@ -30,7 +30,7 @@ class FreeEdtechTools::Edtech
         @@all
     end
 #utilizing methods within Scraper
-    # def self.filter_by_category(category)
+    # def filter(category)
     #     #returns desired values, but does not pass tests written
     #     self.all.select { |apps| apps.category == category }
     # end
