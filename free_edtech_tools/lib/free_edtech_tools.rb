@@ -1,8 +1,8 @@
-require "free_edtech_tools/version"
+require_relative "free_edtech_tools/version"
 
-# module FreeEdtechTools
-#   # Your code goes here...
-# end
+module FreeEdtechTools
+  # Your code goes here...
+end
 
 require 'open-uri'
 require 'nokogiri'
