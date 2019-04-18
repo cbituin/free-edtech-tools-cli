@@ -20,15 +20,34 @@ class FreeEdtechTools::Scraper
 
     # ol counter => produces numbers to iterate through css for applications wanted (6, 8, 10, 12, 14, 16, 18)
         ol_counter = 6
-        while ol_counter <= 18
+        while ol_counter <= 18 
             # @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
             
 #TODO: url is returning NoMethodError for 'value'
-            
             applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
                 name = app.css("a").text.strip.gsub("\u00a0", "")
                 description = app.text.gsub("#{app.css("a").text}", "").strip
-                category = @@all_cats[ol_counter - 6]
+                
+                #TODO: apps are assigning to the wrong categories.
+                #["Tools To Create Infographics", "Text To Speech Tools", "Digital Storytelling Tools", "Podcast Tools", "Survey, Polls, and Quizzes Tools", "Screen Capturing Tools", "Social Bookmarking Tools"]
+                case ol_counter
+                when 6
+                    category = @@all_cats[0]
+                when 8
+                    category = @@all_cats[1]
+                when 10
+                    category = @@all_cats[2]
+                when 12
+                    category = @@all_cats[3]
+                when 14
+                    category = @@all_cats[4]
+                when 16
+                    category = @@all_cats[5]
+                when 18
+                    category = @@all_cats[6]
+                end
+
+
                 url = app.css("a").attribute("href") #.value
 
                 # binding.pry                

@@ -5,13 +5,14 @@ require 'pry'
 class FreeEdtechTools::CLI
     
     def call
-        FreeEdtechTools::Scraper.scrape_main_page("https://elearningindustry.com/321-free-tools-for-teachers-free-educational-technology")        
+        FreeEdtechTools::Scraper.scrape_main_page("https://elearningindustry.com/321-free-tools-for-teachers-free-educational-technology")
         welcome
         menu
         goodbye
     end
 
     def welcome
+        clear_screen
         2.times {puts}
         
         puts "Welcome to The Best CLI Edtech Library on the Planet! Feel free to browse our #{FreeEdtechTools::Scraper.all_apps.count} apps!"
@@ -20,10 +21,8 @@ class FreeEdtechTools::CLI
         2.times {puts}
         sleep(2)
 
-        #TODO - add loop and fix formatting example => 1. Category
-        #TODO - shorten time to display apps
-        FreeEdtechTools::Scraper.all_cats.each { |app| 
-            puts app
+        FreeEdtechTools::Scraper.all_cats.each_with_index { |app, index| 
+            puts "#{index+=1}. #{app}"
             sleep(0.25)
         }
         sleep(1)
@@ -31,19 +30,17 @@ class FreeEdtechTools::CLI
     end
 
     def menu
-        # binding.pry
+        inputcat = nil
 
-        input = nil
-
-        while input != "exit"
+        while inputcat != "exit"
             puts "Enter #1-7 to make your selection. Type 'exit' to leave."
-            input = gets.strip.to_i
-            goodbye if input === "exit"
-            if input < 0 || input > 7
+            inputcat = gets.strip.to_i
+            goodbye if inputcat === "exit"
+            if inputcat < 0 || inputcat > 7
                 welcome
             else
 
-            selected_cat = FreeEdtechTools::Scraper.all_cats[input - 1]
+            selected_cat = FreeEdtechTools::Scraper.all_cats[inputcat - 1]
             
             2.times {puts}
             
@@ -63,7 +60,7 @@ class FreeEdtechTools::CLI
             puts "Enter the number of the app that you want more information on. Or type 'menu' to go back to the main menu."
             input = gets.strip.downcase
             goodbye if input === "exit"
-            menu if input === "menu"
+            welcome if input === "menu"
 
             input = input.to_i
             if input < 0 || input > FreeEdtechTools::Scraper.filter(selected_cat).count
@@ -86,9 +83,9 @@ Description: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].descript
             puts
             puts "Type 'menu' to return to the main menu. Type 'exit' to leave."
             
-            input = gets.strip.downcase
+            inputnext = gets.strip.downcase
 
-            case input
+            case inputnext
             when "menu"
                 welcome
             when "exit"

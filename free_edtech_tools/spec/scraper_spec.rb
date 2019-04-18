@@ -1,6 +1,6 @@
 require "spec_helper.rb"
 
-describe "Scraper" do
+describe "FreeEdtechTools::Scraper" do
 
     let!(:app_index_array) {[
         {:name=>"amCharts Visual Editor", :category=>"Create Infographics", :description=>" This editor allows you to use amCharts as a web service. This means that all you need to do is to configure the chart and paste the generated HTML code to your HTML page.", :url=>"https://live.amcharts.com/?utm_campaign=elearningindustry.com"},
@@ -12,7 +12,7 @@ describe "Scraper" do
        it "is a class method that collects all the main data from the website and returns an array of hashes where each hash represents one application" do
            
            index_url = "./fixtures/index.html"
-           scraped_apps = Scraper.scrape_main_page(index_url)
+           scraped_apps = FreeEdtechTools::Scraper.scrape_main_page(index_url)
            expect(scraped_apps).to be_a(Array)
            expect(scraped_apps.first).to have_key(:name)
            expect(scraped_apps.first).to have_key(:category)
