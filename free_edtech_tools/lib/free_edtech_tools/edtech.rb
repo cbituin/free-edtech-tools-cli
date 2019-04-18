@@ -19,16 +19,17 @@ class FreeEdtechTools::Edtech
             self.new(app)
         end
     end
-
+    
+    def self.all
+        @@all
+    end
 #replaced with addition to #initialize    
 #    def add_attributes(edtech_hash)
 #        self.description = edtech_hash[:description]
 #        self.url = edtech_hash[:url]
 #    end
     
-    def self.all
-        @@all
-    end
+
 #utilizing methods within Scraper
     # def filter(category)
     #     #returns desired values, but does not pass tests written

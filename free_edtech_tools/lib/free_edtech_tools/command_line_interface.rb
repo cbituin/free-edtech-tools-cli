@@ -24,27 +24,31 @@ class FreeEdtechTools::CLI
         #TODO - shorten time to display apps
         FreeEdtechTools::Scraper.all_cats.each { |app| 
             puts app
-            sleep(0.5)
+            sleep(0.25)
         }
         sleep(1)
         puts
     end
 
     def menu
+        # binding.pry
+
         input = nil
 
         while input != "exit"
             puts "Enter #1-7 to make your selection. Type 'exit' to leave."
             input = gets.strip.to_i
             goodbye if input === "exit"
-            
+            if input < 0 || input > 7
+                welcome
+            else
+
             selected_cat = FreeEdtechTools::Scraper.all_cats[input - 1]
             
-            clear_screen
             2.times {puts}
             
-            #TODO - potential for separation into different method; ex: #cats_menu vs #apps_menu
             i = 0
+            clear_screen
             FreeEdtechTools::Scraper.filter(selected_cat).map { |app|
                 puts "#{i + 1}. #{app.name}"
                 i+=1
@@ -52,16 +56,19 @@ class FreeEdtechTools::CLI
             }
             
             2.times {puts} 
-
+            end
+            
+            #TODO - potential for separation into different method; ex: #cats_menu vs #apps_menu
+        
             puts "Enter the number of the app that you want more information on. Or type 'menu' to go back to the main menu."
-
             input = gets.strip.downcase
             goodbye if input === "exit"
-            if input === "menu"
-                clear_screen
+            menu if input === "menu"
+
+            input = input.to_i
+            if input < 0 || input > FreeEdtechTools::Scraper.filter(selected_cat).count
                 welcome
             else
-                input = input.to_i
                 selection = %Q(
 Name: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].name}
                     
@@ -94,7 +101,11 @@ Description: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].descript
     def goodbye
         sleep(1)
         clear_screen
+        5.times {puts}
         puts "Thanks for exploring our collection of educational apps!"
+        sleep(2)
+        clear_screen
+        exit
     end
 
     def clear_screen

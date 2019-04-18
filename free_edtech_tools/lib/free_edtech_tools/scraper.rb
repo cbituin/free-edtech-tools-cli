@@ -58,7 +58,7 @@ class FreeEdtechTools::Scraper
    end
 
    def self.filter(category)
-    self.all_apps.select { |apps| apps.category == category }
+    self.all_apps.select { |apps| apps.category.to_s.downcase == category.to_s.downcase }
    end
    
 end
