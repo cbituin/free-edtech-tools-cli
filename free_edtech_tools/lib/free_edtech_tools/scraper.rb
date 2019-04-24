@@ -28,7 +28,6 @@ class FreeEdtechTools::Scraper
                 name = app.css("a").text.strip.gsub("\u00a0", "")
                 description = app.text.gsub("#{app.css("a").text}", "").strip
                 
-                #TODO: apps are assigning to the wrong categories.
                 #["Tools To Create Infographics", "Text To Speech Tools", "Digital Storytelling Tools", "Podcast Tools", "Survey, Polls, and Quizzes Tools", "Screen Capturing Tools", "Social Bookmarking Tools"]
                 case ol_counter
                 when 6
