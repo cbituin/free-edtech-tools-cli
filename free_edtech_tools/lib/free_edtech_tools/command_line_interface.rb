@@ -12,10 +12,10 @@ class FreeEdtechTools::CLI
     end
 
     def welcome
-        ear_screen
+        clear_screen
         2.times {puts}
         
-        puts "Welcome to The Best CLI Edtech Library on the Planet! Feel free to browse our #{FreeEdtechTools::Scraper.all_apps.count} apps!"
+        puts "Welcome to The Best CLI Edtech Library on the Planet! Feel free to browse our #{FreeEdtechTools::Edtech.all.count} apps!"
         puts "What type of tool are you looking for today?"
         
         2.times {puts}
@@ -37,7 +37,7 @@ class FreeEdtechTools::CLI
             inputcat = gets.strip.to_i
             goodbye if inputcat === "exit"
             # menu if inputcat
-            if inputcat < 0 || inputcat > 7
+            if inputcat <= 0 || inputcat > 7
                 welcome
             else
 
@@ -46,8 +46,8 @@ class FreeEdtechTools::CLI
             2.times {puts}
             
             i = 0
-            ear_screen
-            FreeEdtechTools::Scraper.filter(selected_cat).map { |app|
+            clear_screen
+            FreeEdtechTools::Edtech.filter(selected_cat).map { |app|
                 puts "#{i + 1}. #{app.name}"
                 i+=1
                 sleep(0.25)
@@ -64,15 +64,15 @@ class FreeEdtechTools::CLI
             welcome if input === "menu"
 
             input = input.to_i
-            if input < 0 || input > FreeEdtechTools::Scraper.filter(selected_cat).count
+            if input <= 0 || input > FreeEdtechTools::Edtech.filter(selected_cat).count
                 welcome
             else
                 selection = %Q(
-Name: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].name}
+Name: #{FreeEdtechTools::Edtech.filter(selected_cat)[input - 1].name}
                     
-URL: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].url}
+URL: #{FreeEdtechTools::Edtech.filter(selected_cat)[input - 1].url}
                     
-Description: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].description}
+Description: #{FreeEdtechTools::Edtech.filter(selected_cat)[input - 1].description}
                 )
                 puts selection
             end
@@ -98,11 +98,11 @@ Description: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].descript
 
     def goodbye
         sleep(1)
-        ear_screen
+        clear_screen
         5.times {puts}
         puts "Thanks for exploring our collection of educational apps!"
         sleep(2)
-        ear_screen
+        clear_screen
         exit
     end
 

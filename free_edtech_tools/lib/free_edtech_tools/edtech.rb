@@ -14,13 +14,13 @@ class FreeEdtechTools::Edtech
         @@all << self
     end
 
-#TODO: It doesn't look like you're using `Edtech.create_from_collection`.. is that a relic or something you were on your way to using?  If you're not using it, might as well get rid of it.
+# #TODO: It doesn't look like you're using `Edtech.create_from_collection`.. is that a relic or something you were on your way to using?  If you're not using it, might as well get rid of it.
 
-    def self.create_from_collection(edtech_array)
-        edtech_array.each do |app|
-            self.new(app)
-        end
-    end
+#     def self.create_from_collection(edtech_array)
+#         edtech_array.each do |app|
+#             self.new(app)
+#         end
+#     end
     
     def self.all
         @@all
@@ -31,11 +31,9 @@ class FreeEdtechTools::Edtech
 #        self.url = edtech_hash[:url]
 #    end
     
+#TODO: 2.  Move `self.filter` to `Edtech` as well.. it should be `Edtech`'s business to know about all its instances and how to look through them.
 
-#utilizing methods within Scraper
-    # def filter(category)
-    #     #returns desired values, but does not pass tests written
-    #     self.all.select { |apps| apps.category == category }
-    # end
-    
+def self.filter(category)
+    self.all.select { |apps| apps.category.to_s.downcase == category.to_s.downcase }
+   end
 end
