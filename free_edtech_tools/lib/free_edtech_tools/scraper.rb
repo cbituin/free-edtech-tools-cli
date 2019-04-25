@@ -6,9 +6,11 @@ class FreeEdtechTools::Scraper
     
     @@all_apps = []
     @@all_cats = []
-   
+#TODO: 3.  The above changes will mean you'll need to refactor `CLI`.  Really, scraper methods should be invoked only to scrape and get info that is used to populate instances of `Edtech`.. then we should refer to `Edtech` and its methods to get the information we want.. in other words, `Scraper` methods shouldn't be returning anything valuable, but rather just build and/or update `Edtech` objects.
+
    def self.scrape_main_page(index_url)
        html = open(index_url)
+       puts "SCRAING #{index_url}"
        applications_page = Nokogiri::HTML(html)
 
     #h2 counter => produces numbers to iterate through css for categories wanted (5, 7, 9, 11, 13, 15, 17)
@@ -23,12 +25,10 @@ class FreeEdtechTools::Scraper
         while ol_counter <= 18 
             # @@all_apps << applications_page.css("ol:nth-child(#{ol_counter}) li").text
             
-#TODO: url is returning NoMethodError for 'value'
             applications_page.css("ol:nth-child(#{ol_counter}) li").each do |app|
                 name = app.css("a").text.strip.gsub("\u00a0", "")
                 description = app.text.gsub("#{app.css("a").text}", "").strip
                 
-                #TODO: apps are assigning to the wrong categories.
                 #["Tools To Create Infographics", "Text To Speech Tools", "Digital Storytelling Tools", "Podcast Tools", "Survey, Polls, and Quizzes Tools", "Screen Capturing Tools", "Social Bookmarking Tools"]
                 case ol_counter
                 when 6
@@ -51,7 +51,7 @@ class FreeEdtechTools::Scraper
                 url = app.css("a").attribute("href") #.value
 
                 # binding.pry                
-                @@all_apps << FreeEdtechTools::Edtech.new(
+                FreeEdtechTools::Edtech.new(
                 :name => name, 
                 :description => description, 
                 :category => category, 
@@ -61,23 +61,19 @@ class FreeEdtechTools::Scraper
             ol_counter += 2
         end
     # binding.pry
-
    end
    
    def self.short_cat_title(str)
        str.gsub(/(\w+ Free )|( For Teachers)/, "").gsub("\u00a0", "")
    end
    
-   def self.all_apps
-       @@all_apps
-   end
-   
    def self.all_cats
        @@all_cats
    end
+#TODO: 2.  Move `self.filter` to `Edtech` as well.. it should be `Edtech`'s business to know about all its instances and how to look through them.
 
    def self.filter(category)
-    self.all_apps.select { |apps| apps.category.to_s.downcase == category.to_s.downcase }
+    FreeEdtechTools::Edtech.all.select { |apps| apps.category.to_s.downcase == category.to_s.downcase }
    end
    
 end

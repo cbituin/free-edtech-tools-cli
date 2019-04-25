@@ -13,7 +13,9 @@ class FreeEdtechTools::Edtech
         @url = edtech_hash[:url]
         @@all << self
     end
-    
+
+#TODO: It doesn't look like you're using `Edtech.create_from_collection`.. is that a relic or something you were on your way to using?  If you're not using it, might as well get rid of it.
+
     def self.create_from_collection(edtech_array)
         edtech_array.each do |app|
             self.new(app)

@@ -12,7 +12,7 @@ class FreeEdtechTools::CLI
     end
 
     def welcome
-        clear_screen
+        ear_screen
         2.times {puts}
         
         puts "Welcome to The Best CLI Edtech Library on the Planet! Feel free to browse our #{FreeEdtechTools::Scraper.all_apps.count} apps!"
@@ -36,6 +36,7 @@ class FreeEdtechTools::CLI
             puts "Enter #1-7 to make your selection. Type 'exit' to leave."
             inputcat = gets.strip.to_i
             goodbye if inputcat === "exit"
+            # menu if inputcat
             if inputcat < 0 || inputcat > 7
                 welcome
             else
@@ -45,7 +46,7 @@ class FreeEdtechTools::CLI
             2.times {puts}
             
             i = 0
-            clear_screen
+            ear_screen
             FreeEdtechTools::Scraper.filter(selected_cat).map { |app|
                 puts "#{i + 1}. #{app.name}"
                 i+=1
@@ -97,11 +98,11 @@ Description: #{FreeEdtechTools::Scraper.filter(selected_cat)[input - 1].descript
 
     def goodbye
         sleep(1)
-        clear_screen
+        ear_screen
         5.times {puts}
         puts "Thanks for exploring our collection of educational apps!"
         sleep(2)
-        clear_screen
+        ear_screen
         exit
     end
 
