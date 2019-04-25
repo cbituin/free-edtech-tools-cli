@@ -1,5 +1,3 @@
-require 'pry'
-
 class FreeEdtechTools::Edtech 
     
     attr_accessor :name, :category, :description, :url

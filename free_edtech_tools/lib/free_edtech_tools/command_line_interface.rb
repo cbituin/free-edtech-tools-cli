@@ -1,7 +1,3 @@
-#CLI Controller
-
-require 'pry'
-
 class FreeEdtechTools::CLI
     
     def call
@@ -36,23 +32,20 @@ class FreeEdtechTools::CLI
             puts "Enter #1-7 to make your selection. Type 'exit' to leave."
             inputcat = gets.strip.to_i
             goodbye if inputcat === "exit"
-            # menu if inputcat
             if inputcat <= 0 || inputcat > 7
                 welcome
             else
-
             selected_cat = FreeEdtechTools::Scraper.all_cats[inputcat - 1]
             
             2.times {puts}
             
             i = 0
             clear_screen
-            FreeEdtechTools::Edtech.filter(selected_cat).map { |app|
+            FreeEdtechTools::Edtech.filter(selected_cat).map do |app|
                 puts "#{i + 1}. #{app.name}"
                 i+=1
                 sleep(0.25)
-            }
-            
+            end
             2.times {puts} 
             end
             
@@ -93,11 +86,9 @@ Description: #{FreeEdtechTools::Edtech.filter(selected_cat)[input - 1].descripti
                 goodbye
             end
         end
-
     end
 
     def goodbye
-        sleep(1)
         clear_screen
         5.times {puts}
         puts "Thanks for exploring our collection of educational apps!"
