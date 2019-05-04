@@ -4,27 +4,11 @@ This is a Ruby Gem that provides a CLI to allow educators to find education tech
 
 A video walkthrough of this gem can be found <a href="https://drive.google.com/file/d/1Yrz4YYGDDwhxFFwWYxEEgNCGy4P1SVad/view?usp=sharing">here</a>. 
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'free_edtech_tools'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install free_edtech_tools
-
 ## Usage
 
 Start the CLI application, then follow the prompts:
 
-    $ free_edtech_tools
+    $ ruby free_edtech_tools
 
 ## Development
 
